@@ -1,0 +1,75 @@
+/* color palette from <https://github.com/vuejs/theme> */
+@use 'sass:math';
+@import 'reset';
+
+@font-face {
+  font-family: 'Cera Pro';
+  src: url('./assets/font/CeraPro-regular.woff2') format('woff2'),
+    url('./assets/font/CeraPro-regular.woff') format('woff');
+  font-weight: 400;
+}
+
+@mixin CeraPro {
+  font: {
+    family: 'Cera Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+      Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  }
+}
+
+@mixin media-up($min-width: 0px) {
+  @media screen and (min-width: $min-width) {
+    @content;
+  }
+}
+
+@function rem($px) {
+  $result: #{math.div($px, 16)}rem;
+  @return $result;
+}
+
+$bg-color: #F5ECE3;
+$text-color: #F5ECE3;
+$logo-color: #AC8F78;
+
+$white: #FFF;
+
+$font-size-primary: 16px;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  position: relative;
+  font-weight: normal;
+}
+
+body {
+  @include CeraPro();
+  transition: color 0.5s, background-color 0.5s;
+  background-color: $bg-color;
+  line-height: 1.6;
+  font-size: rem($font-size-primary);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: auto;
+}
+
+h1 {
+  font-size: rem(36);
+  line-height: 1,2;
+}
+
+.container {
+  margin: 0 auto;
+}
